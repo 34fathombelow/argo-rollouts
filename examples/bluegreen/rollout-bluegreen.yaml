@@ -48,6 +48,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: rollout-bluegreen-active
+  annotations:
+    simple-test: "true"
 spec:
   selector:
     app: rollout-bluegreen
