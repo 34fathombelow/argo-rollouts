@@ -15,7 +15,7 @@ spec:
       labels:
         app: rollout-bluegreen
       annotations:
-          haproxy.router.openshift.io/disable_cookies: "true"
+          haproxy.router.openshift.io/disable_cookies: "false"
     spec:
       containers:
       - name: rollouts-demo
