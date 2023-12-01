@@ -4,9 +4,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: rollout-bluegreen
-  annotations:
-          haproxy.router.openshift.io/disable_cookies: "true"
-          active-test: "false"
 spec:
   replicas: 2
   revisionHistoryLimit: 2
@@ -38,7 +35,14 @@ spec:
       # stack as soon as the ReplicaSet are completely ready/available.
       # Rollouts can be resumed using: `kubectl argo rollouts promote ROLLOUT`
       autoPromotionEnabled: false
-
+      activeMetadata:
+        annotations:
+          haproxy.router.openshift.io/disable_cookies: "true"
+          active-test: "true"
+      previewMetadata:
+        annotations:
+          haproxy.router.openshift.io/disable_cookies: "true"
+          active-test: "false"
 
 ---
 kind: Service
