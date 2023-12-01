@@ -14,10 +14,12 @@ spec:
     metadata:
       labels:
         app: rollout-bluegreen
+      annotations:
+          haproxy.router.openshift.io/disable_cookies: "true"
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:green
+        image: argoproj/rollouts-demo:blue
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -35,14 +37,6 @@ spec:
       # stack as soon as the ReplicaSet are completely ready/available.
       # Rollouts can be resumed using: `kubectl argo rollouts promote ROLLOUT`
       autoPromotionEnabled: false
-      activeMetadata:
-        annotations:
-          haproxy.router.openshift.io/disable_cookies: "true"
-          active-test: "true"
-      previewMetadata:
-        annotations:
-          haproxy.router.openshift.io/disable_cookies: "true"
-          active-test: "false"
 
 ---
 kind: Service
