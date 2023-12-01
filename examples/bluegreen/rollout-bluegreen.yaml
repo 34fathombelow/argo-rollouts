@@ -40,11 +40,11 @@ spec:
       activeMetadata:
         annotations:
           haproxy.router.openshift.io/disable_cookies: "true"
-          active-test: true
+          active-test: "true"
       previewMetadata:
         annotations:
           haproxy.router.openshift.io/disable_cookies: "true"
-          active-test: false
+          active-test: "false"
 
 ---
 kind: Service
